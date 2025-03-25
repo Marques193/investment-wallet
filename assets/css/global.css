@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  --main-bg-color: #d9d9d9;
+}
+
+body {
+  font-family: "rubik", sans-serif;
+  background-color: var(--main-bg-color);
+}
