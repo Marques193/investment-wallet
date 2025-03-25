@@ -1,0 +1,7 @@
+header {
+  background-color: var(--secondary-color);
+}
+
+header h1 {
+  color: #fff;
+}
