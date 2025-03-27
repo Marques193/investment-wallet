@@ -2,6 +2,70 @@ header {
   background-color: var(--secondary-color);
 }
 
+header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  max-width: 1720px;
+  margin: 0 auto;
+}
+
 header h1 {
   color: #fff;
+}
+
+header .info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fafafa;
+  height: 50%;
+  width: 720px;
+  border-radius: 15px;
+}
+
+header .info-header .info-saldo,
+.info-bruto,
+.info-delta {
+  margin: 0 10px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+main .body-container {
+  display: flex;
+  justify-content: center;
+  width: 1720px;
+  margin-top: 15px;
+}
+
+main .body-container .summary {
+  width: 45vw;
+  height: 40vh;
+  background-color: #f1f1f1;
+  border: 2px solid #c9c9c9;
+  border-radius: 25px 0 0 25px;
+}
+
+main .body-container .summary .summary-info {
+  margin: 15px;
+}
+
+main .body-container .graph {
+  width: 45vw;
+  height: 40vh;
+  background-color: #f1f1f1;
+  border-radius: 0 25px 25px 0;
+  border: 2px solid #c9c9c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .body-container .graph .graph-image {
+  margin: 15px;
 }
