@@ -13,6 +13,7 @@ header .header-container {
 
 header h1 {
   color: #fff;
+  text-decoration: underline var(--primary-color);
 }
 
 header .info-header {
@@ -44,6 +45,9 @@ main .body-container {
 }
 
 main .body-container .summary {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
   width: 45vw;
   height: 40vh;
   background-color: #f1f1f1;
@@ -51,8 +55,34 @@ main .body-container .summary {
   border-radius: 25px 0 0 25px;
 }
 
+main .body-container .summary .summary-selector {
+  margin: 15px 0 0 15px;
+}
+
+main .body-container .summary .summary-selector button {
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 49%;
+  font-weight: 600;
+}
+
+main .body-container .summary .summary-highlights {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 15px 10px 0 15px;
+}
+
 main .body-container .summary .summary-info {
-  margin: 15px;
+  display: flex;
+  background-color: #bebebe;
+  height: 72px;
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 6px;
+  align-items: center;
+  justify-content: center;
 }
 
 main .body-container .graph {
