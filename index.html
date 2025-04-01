@@ -18,7 +18,10 @@
   <body>
     <header>
       <div class="header-container">
-        <h1>Minha carteira de investimentos</h1>
+        <div class="header-logo">
+          <img src="assets/imgs/wallet-favicon.svg" alt="" />
+          <h1>Minha carteira de investimentos</h1>
+        </div>
 
         <div class="info-header">
           <div class="info-saldo"><p>Saldo: R$ 1.873,66</p></div>
@@ -29,19 +32,37 @@
     </header>
 
     <main>
-      <div class="body-container">
+      <div class="main-container">
         <div class="summary">
           <div class="summary-selector">
             <button>DESTAQUES</button> <button>PATRIMÔNIO</button>
           </div>
-          <div class="summary-highlights">
-            <div class="summary-info">RZTR11</div>
-            <div class="summary-info">PETR4</div>
-            <div class="summary-info">VALE3</div>
-          </div>
+          <ul class="summary-highlights">
+            <li class="summary-info">
+              <p>RZTR11</p>
+              <p>Var: 1,03%</p>
+              <p>DY: 11,40%</p>
+              <p>P/VP: 0,89</p>
+            </li>
+            <li class="summary-info">
+              <p>PETR4</p>
+              <p>Var: 4,83%</p>
+              <p>DY: 9,10%</p>
+              <p>P/VP: 0,99</p>
+            </li>
+            <li class="summary-info">
+              <p>VALE3</p>
+              <p>Var: 3,71%</p>
+              <p>DY: 10,12%</p>
+              <p>P/VP: 1,01</p>
+            </li>
+          </ul>
         </div>
         <div class="graph"><div class="graph-image">TESTE</div></div>
       </div>
     </main>
+    <section class="main-wallet">
+      <div class="wallet-products">TESTE</div>
+    </section>
   </body>
 </html>

@@ -1,5 +1,7 @@
+/* HEADER */
 header {
   background-color: var(--secondary-color);
+  filter: drop-shadow(0px 0px 5px rgb(49, 49, 49));
 }
 
 header .header-container {
@@ -11,7 +13,18 @@ header .header-container {
   margin: 0 auto;
 }
 
-header h1 {
+header .header-logo {
+  display: flex;
+  flex-direction: row;
+  text-wrap: nowrap;
+  gap: 10px;
+}
+
+header .header-logo img {
+  max-width: 35px;
+}
+
+header .header-logo h1 {
   color: #fff;
   text-decoration: underline var(--primary-color);
 }
@@ -22,7 +35,7 @@ header .info-header {
   justify-content: space-between;
   background-color: #fafafa;
   height: 50%;
-  width: 720px;
+  width: 640px;
   border-radius: 15px;
 }
 
@@ -32,34 +45,35 @@ header .info-header .info-saldo,
   margin: 0 10px;
 }
 
+/* MAIN */
 main {
   display: flex;
   justify-content: center;
 }
 
-main .body-container {
+main .main-container {
   display: flex;
   justify-content: center;
-  width: 1720px;
+  max-width: 1720px;
   margin-top: 15px;
 }
 
-main .body-container .summary {
+main .main-container .summary {
   display: inline-block;
   align-items: center;
   justify-content: center;
   width: 45vw;
-  height: 40vh;
+  height: 100%;
   background-color: #f1f1f1;
   border: 2px solid #c9c9c9;
   border-radius: 25px 0 0 25px;
 }
 
-main .body-container .summary .summary-selector {
+main .main-container .summary .summary-selector {
   margin: 15px 0 0 15px;
 }
 
-main .body-container .summary .summary-selector button {
+main .main-container .summary .summary-selector button {
   align-items: center;
   justify-content: center;
   height: 64px;
@@ -67,27 +81,31 @@ main .body-container .summary .summary-selector button {
   font-weight: 600;
 }
 
-main .body-container .summary .summary-highlights {
+main .main-container .summary .summary-highlights {
+  padding: 0;
+  list-style-type: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 15px 10px 0 15px;
 }
 
-main .body-container .summary .summary-info {
+main .main-container .summary .summary-info {
+  box-sizing: border-box;
   display: flex;
-  background-color: #bebebe;
+  background-color: #cccccc;
   height: 72px;
   width: 100%;
   border-radius: 15px;
   margin-bottom: 6px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  border-left: 16px solid var(--primary-color);
 }
 
-main .body-container .graph {
+main .main-container .graph {
   width: 45vw;
-  height: 40vh;
+  height: 100%;
   background-color: #f1f1f1;
   border-radius: 0 25px 25px 0;
   border: 2px solid #c9c9c9;
@@ -96,6 +114,26 @@ main .body-container .graph {
   justify-content: center;
 }
 
-main .body-container .graph .graph-image {
+main .main-container .graph .graph-image {
   margin: 15px;
+}
+
+/* CONTEUDO DA CARTEIRA */
+.main-wallet {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 1720px;
+  margin: 15px auto;
+}
+
+.main-wallet .wallet-products {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  min-height: 720px;
+  background-color: #f1f1f1;
+  border: 2px solid #c9c9c9;
+  border-radius: 25px;
 }
