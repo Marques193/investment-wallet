@@ -2,6 +2,8 @@
 header {
   background-color: var(--secondary-color);
   filter: drop-shadow(0px 0px 5px rgb(49, 49, 49));
+  position: sticky;
+  top: 0;
 }
 
 header .header-container {
@@ -129,11 +131,36 @@ main .main-container .graph .graph-image {
 
 .main-wallet .wallet-products {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  text-align: center;
   width: 90vw;
-  min-height: 720px;
+  min-height: 50vh;
   background-color: #f1f1f1;
   border: 2px solid #c9c9c9;
   border-radius: 25px;
+}
+
+.main-wallet .wallet-products .products-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #cccccc;
+  min-height: 72px;
+  width: 98.5%;
+  border-radius: 15px;
+  margin: 15px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.main-wallet .wallet-products .products-container .products-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-wallet .wallet-products .products-container ul {
+  padding: 0;
+  list-style-type: none;
 }
