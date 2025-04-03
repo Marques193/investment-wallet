@@ -151,15 +151,41 @@ main .main-container .graph .graph-image {
   width: 98.5%;
   border-radius: 15px;
   margin: 15px;
-  align-items: center;
-  justify-content: space-around;
+  border: 1px solid #b9b9b9;
 }
 
 .main-wallet .wallet-products .products-container .products-header {
   display: flex;
   align-items: center;
+  margin: 0px 30px;
   justify-content: space-between;
 }
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-header
+  .products-header-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 32px;
+  background-color: #fafafa;
+  border-radius: 15px;
+  border: 2px solid #b9b9b9;
+}
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-header
+  .products-header-info
+  .phi-info {
+  margin: 10px;
+}
+
 .main-wallet .wallet-products .products-container ul {
   padding: 0;
   list-style-type: none;
