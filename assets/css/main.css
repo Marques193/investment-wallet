@@ -186,7 +186,34 @@ main .main-container .graph .graph-image {
   margin: 10px;
 }
 
-.main-wallet .wallet-products .products-container ul {
-  padding: 0;
-  list-style-type: none;
+.main-wallet .wallet-products .products-container .products-list {
+  height: 56px;
+  margin: 0px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #b9b9b9;
+}
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-list
+  tr:nth-child(even) {
+  background-color: #e7e7e7;
+}
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-list
+  tr:nth-child(odd) {
+  background-color: #dddcdc;
+}
+
+.main-wallet .wallet-products .products-container .table-header {
+  background-color: #e0e0e0;
+  height: 32px;
+}
+
+.main-wallet .wallet-products .products-container .products-list .table-row {
+  height: 46px;
 }
