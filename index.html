@@ -65,13 +65,16 @@
       <div class="wallet-products">
         <div class="products-container">
           <div class="products-header">
-            <h4>AÇÕES</h4>
+            <div class="contain">
+              <h4>AÇÕES</h4>
+              <button id="add-stock">+</button>
+            </div>
             <div class="products-header-info">
               <div class="phi-info">Variação: 3,20%</div>
               <div class="phi-info">Saldo: R$ 567,18</div>
             </div>
           </div>
-          <table class="products-list">
+          <table id="stock-table" class="products-list">
             <tr class="table-header">
               <th>NOME</th>
               <th>QUANTIDADE</th>
@@ -82,13 +85,13 @@
               <th>DY</th>
             </tr>
             <tr class="table-row">
-              <td><span>PETR4</span></td>
-              <td><span>100</span></td>
-              <td><span>R$ 3318,00</span></td>
-              <td><span>R$ 33,18</span></td>
-              <td><span>R$ 32.13</span></td>
-              <td><span>3,14%</span></td>
-              <td><span>7,80%</span></td>
+              <td><span class="stock-name">PETR4</span></td>
+              <td><span class="stock-amount">100</span></td>
+              <td><span class="stock-balance">R$ 3318,00</span></td>
+              <td><span class="stock-price">R$ 33,18</span></td>
+              <td><span class="stock-average">R$ 32.13</span></td>
+              <td><span class="stock-var">3,14%</span></td>
+              <td><span class="stock-dy">7,80%</span></td>
             </tr>
             <tr class="table-row">
               <td><span>VALE3</span></td>
@@ -218,5 +221,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Script -->
+    <script defer src="assets/scripts/script.js"></script>
   </body>
 </html>

@@ -161,6 +161,22 @@ main .main-container .graph .graph-image {
   justify-content: space-between;
 }
 
+.main-wallet .wallet-products .products-container .products-header .contain {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15%;
+}
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-header
+  .contain
+  button {
+  height: 50%;
+}
+
 .main-wallet
   .wallet-products
   .products-container
