@@ -168,6 +168,7 @@ main .main-container .graph .graph-image {
   gap: 15%;
 }
 
+/* Adicionar acao */
 .main-wallet
   .wallet-products
   .products-container
@@ -175,6 +176,28 @@ main .main-container .graph .graph-image {
   .contain
   button {
   height: 50%;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-header
+  .contain
+  button:hover {
+  background-color: #62bbff;
+}
+
+.main-wallet
+  .wallet-products
+  .products-container
+  .products-header
+  .contain
+  button:active {
+  background-color: #b2deff;
 }
 
 .main-wallet
@@ -286,7 +309,7 @@ main .main-container .graph .graph-image {
 }
 
 .main-wallet form .form-buttons #confirm:hover {
-  background-color: #8accff;
+  background-color: #62bbff;
 }
 
 .main-wallet form .form-buttons #confirm:active {

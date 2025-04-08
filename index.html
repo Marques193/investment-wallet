@@ -62,12 +62,12 @@
       </div>
     </main>
     <section class="main-wallet">
-      <form action="#" class="stock-form">
+      <form class="stock-form">
         <div class="form-container">
           <div class="form-container-inside">
             <h4>Adicionar ação</h4>
             <p>Nome:</p>
-            <input type="text" id="stock-form-name" />
+            <input type="text" id="stock-form-name" required />
 
             <p>Quantidade:</p>
             <input type="text" id="stock-form-amount" />
@@ -79,8 +79,18 @@
           </div>
 
           <div class="form-buttons">
-            <input id="cancel" type="button" value="Cancelar" />
-            <input id="confirm" type="button" value="Confirmar" />
+            <input
+              id="cancel"
+              type="button"
+              value="Cancelar"
+              onclick="cancelButton()"
+            />
+            <input
+              id="confirm"
+              type="button"
+              value="Confirmar"
+              onclick="getStockValues()"
+            />
           </div>
         </div>
       </form>
@@ -90,7 +100,7 @@
           <div class="products-header">
             <div class="contain">
               <h4>AÇÕES</h4>
-              <button id="add-stock">+</button>
+              <button id="add-stock" onclick="addStockButton()">+</button>
             </div>
             <div class="products-header-info">
               <div class="phi-info">Variação: 3,20%</div>
