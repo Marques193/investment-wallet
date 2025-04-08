@@ -15,7 +15,7 @@
     <title>Carteira de Investimentos</title>
   </head>
 
-  <body class="backdrop">
+  <body class="">
     <header>
       <div class="header-container">
         <div class="header-logo">
@@ -64,15 +64,24 @@
     <section class="main-wallet">
       <form action="#" class="stock-form">
         <div class="form-container">
-          <h5>Adicionar ação</h5>
-          <p>Nome:</p>
-          <input type="text" id="stock-form-name" />
+          <div class="form-container-inside">
+            <h4>Adicionar ação</h4>
+            <p>Nome:</p>
+            <input type="text" id="stock-form-name" />
 
-          <p>Quantidade:</p>
-          <input type="text" id="stock-form-amount" />
+            <p>Quantidade:</p>
+            <input type="text" id="stock-form-amount" />
 
-          <p>Preço:</p>
-          <input type="text" id="stock-form-price" />
+            <p>Preço:</p>
+            <input type="text" id="stock-form-price" />
+
+            <div class="sum-total"><span>Total: R$ 000,00</span></div>
+          </div>
+
+          <div class="form-buttons">
+            <input id="cancel" type="button" value="Cancelar" />
+            <input id="confirm" type="button" value="Confirmar" />
+          </div>
         </div>
       </form>
 

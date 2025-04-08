@@ -236,10 +236,10 @@ main .main-container .graph .graph-image {
 
 /* Formulario de adicionar açoes */
 .main-wallet form {
+  display: none;
   position: fixed;
   top: 25%;
   margin: 0;
-  justify-content: center;
   background-color: #f1f1f1;
   height: 420px;
   width: 400px;
@@ -248,13 +248,49 @@ main .main-container .graph .graph-image {
   padding: 12px;
 }
 
-.main-wallet form h5 {
+.main-wallet form .form-container {
+  margin: 20px;
+}
+
+.main-wallet form h4 {
   text-align: center;
+  padding: 0;
+}
+
+.main-wallet form p {
+  margin: 0;
 }
 
 .main-wallet form input {
-  display: table-cell;
-  min-width: 160px;
+  height: 24px;
+  width: 98%;
+  margin-bottom: 16px;
+}
+
+.main-wallet form .sum-total {
+  text-align: center;
+}
+
+.main-wallet form .form-buttons {
+  display: flex;
+  margin-top: 20%;
+}
+
+.main-wallet form .form-buttons input {
+  height: 46px;
+  font-weight: bold;
+}
+
+.main-wallet form .form-buttons #confirm {
+  background-color: var(--primary-color);
+}
+
+.main-wallet form .form-buttons #confirm:hover {
+  background-color: #8accff;
+}
+
+.main-wallet form .form-buttons #confirm:active {
+  background-color: #b2deff;
 }
 
 /* Escurecer a tela */
