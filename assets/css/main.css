@@ -257,6 +257,10 @@ main .main-container .graph .graph-image {
   height: 46px;
 }
 
+.main-wallet .wallet-products .products-container .products-list .table-row td {
+  text-transform: uppercase;
+}
+
 /* Formulario de adicionar açoes */
 .main-wallet form {
   display: none;
