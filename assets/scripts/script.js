@@ -114,17 +114,44 @@ let loadLocalStock = () => {
     stocks = JSON.parse(localStorage.getItem("stocks"));
   }
 
-  stocks.forEach((stocks, i) => {
-    const stock = stocks[i];
+  stocks.forEach((stocks) => {
     let table = document.getElementById("stock-table");
 
     let loadedRow = table.insertRow();
     loadedRow.classList.add("table-row");
-    console.log(stock);
 
-    // let loadedStockName = loadedRow.insertCell(0);
-    // loadedStockName.innerHTML = stock[index].name;
-    // let loadedStockAmount = loadedRow.insertCell(1);
-    // loadedStockAmount.innerHTML = stock.amount;
+    // carrega o nome e quantidade
+    let loadedNameCell = loadedRow.insertCell(0);
+    loadedNameCell.innerHTML = stocks.name;
+
+    let loadedAmountCell = loadedRow.insertCell(1);
+    loadedAmountCell.innerHTML = stocks.amount;
+
+    // uso da API para pegar o preço atual
+    async function loadFromApi(stock) {
+      const url = `https://brapi.dev/api/quote/${stock}?token=b5chHpq5uJNtrc4hzAbNwd`;
+
+      const response = await fetch(url);
+
+      let json = await response.json();
+
+      let balanceCell = loadedRow.insertCell(2);
+      balanceCell.innerHTML =
+        stocks.amount * json.results[0].regularMarketPrice;
+
+      let apiPriceCell = loadedRow.insertCell(3);
+      apiPriceCell.innerHTML = json.results[0].regularMarketPrice;
+
+      let loadedAverageCell = loadedRow.insertCell(4);
+      loadedAverageCell.innerHTML = stocks.price;
+
+      let apiVarCell = loadedRow.insertCell(5);
+      let apiStockVar = (
+        (json.results[0].regularMarketPrice / stocks.price - 1) *
+        100
+      ).toFixed(2);
+      apiVarCell.innerHTML = `${apiStockVar}%`;
+    }
+    loadFromApi(stocks.name);
   });
 };
