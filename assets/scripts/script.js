@@ -25,7 +25,9 @@ let cancelButton = () => {
 let getStockValues = () => {
   const stockFormName = document.getElementById("stock-form-name").value;
   const stockFormAmount = document.getElementById("stock-form-amount").value;
-  const stockFormPrice = document.getElementById("stock-form-balance").value;
+  const stockFormPrice = parseFloat(
+    document.getElementById("stock-form-balance").value
+  );
 
   //  Testa se os campos estao preenchidos
   if (stockFormName && stockFormAmount && stockFormPrice) {
@@ -39,12 +41,11 @@ let getStockValues = () => {
     let priceCell = row.insertCell(3);
     let averageCell = row.insertCell(4);
     let varCell = row.insertCell(5);
-    let xxxxxxCell = row.insertCell(6);
 
     nameCell.innerHTML = stockFormName;
-    amountCell.innerHTML = stockFormAmount;
+    amountCell.innerHTML = parseFloat(stockFormAmount);
     amountCell.classList.add(`${stockFormName}-stock-amount`);
-    averageCell.innerHTML = stockFormPrice;
+    averageCell.innerHTML = "R$ " + parseFloat(stockFormPrice).toFixed(2);
 
     // API da bolsa
     async function getStockData(ticker) {
@@ -61,7 +62,7 @@ let getStockValues = () => {
       // Pega o preco atual e adiciona na tabela
       stockPrice = json.results[0].regularMarketPrice;
 
-      priceCell.innerHTML = `R$ ${stockPrice}`;
+      priceCell.innerHTML = `R$ ${parseFloat(stockPrice).toFixed(2)}`;
 
       // Calculo de saldo
       const stockAmount = document.querySelector(
@@ -69,10 +70,12 @@ let getStockValues = () => {
       ).innerHTML;
 
       let stockBalance = stockAmount * stockPrice;
-      balanceCell.innerHTML = stockBalance;
+      balanceCell.innerHTML = "R$ " + parseFloat(stockBalance).toFixed(2);
 
       // Calculo de variaçao
-      let stockVar = ((stockPrice / stockFormPrice - 1) * 100).toFixed(2);
+      let stockVar = parseFloat(
+        (stockPrice / stockFormPrice - 1) * 100
+      ).toFixed(2);
       varCell.innerHTML = `${stockVar}%`;
     }
 
@@ -94,6 +97,13 @@ let saveLocalStock = (stockName, stockAmount, stockPrice) => {
     stocks = [];
   } else {
     stocks = JSON.parse(localStorage.getItem("stocks"));
+
+    // checa se ja tem um item igual
+    stocks.forEach((stock, i) => {
+      if (stock.name === stockName) {
+        stocks[i].amount = parseFloat(stocks[i].amount) + 10;
+      }
+    });
   }
 
   const stockObj = {
@@ -137,13 +147,14 @@ let loadLocalStock = () => {
 
       let balanceCell = loadedRow.insertCell(2);
       balanceCell.innerHTML =
-        stocks.amount * json.results[0].regularMarketPrice;
+        "R$ " + (stocks.amount * json.results[0].regularMarketPrice).toFixed(2);
 
       let apiPriceCell = loadedRow.insertCell(3);
-      apiPriceCell.innerHTML = json.results[0].regularMarketPrice;
+      apiPriceCell.innerHTML =
+        "R$ " + parseFloat(json.results[0].regularMarketPrice).toFixed(2);
 
       let loadedAverageCell = loadedRow.insertCell(4);
-      loadedAverageCell.innerHTML = stocks.price;
+      loadedAverageCell.innerHTML = "R$ " + parseFloat(stocks.price).toFixed(2);
 
       let apiVarCell = loadedRow.insertCell(5);
       let apiStockVar = (

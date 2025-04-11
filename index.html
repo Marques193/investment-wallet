@@ -35,7 +35,7 @@
       <div class="main-container">
         <div class="summary">
           <div class="summary-selector">
-            <button onclick="loadLocalStock()">DESTAQUES</button>
+            <button onclick="">DESTAQUES</button>
             <button>PATRIMÔNIO</button>
           </div>
           <ul class="summary-highlights">
@@ -117,14 +117,6 @@
               <th>COTAÇÃO</th>
               <th>PREÇO MÉDIO</th>
               <th>VARIAÇÃO</th>
-            </tr>
-            <tr class="table-row">
-              <td><span class="stock-name">PETR4</span></td>
-              <td><span class="stock-amount">100</span></td>
-              <td><span class="stock-balance">R$ 3318,00</span></td>
-              <td><span class="stock-price">R$ 33,18</span></td>
-              <td><span class="stock-average">R$ 32.13</span></td>
-              <td><span class="stock-var">3,14%</span></td>
             </tr>
           </table>
         </div>
@@ -238,6 +230,10 @@
     </section>
 
     <!-- Script -->
-    <script defer src="assets/scripts/script.js"></script>
+    <script
+      defer
+      src="assets/scripts/script.js"
+      onload="loadLocalStock()"
+    ></script>
   </body>
 </html>
