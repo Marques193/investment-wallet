@@ -15,7 +15,7 @@
     <title>Carteira de Investimentos</title>
   </head>
 
-  <body class="">
+  <body class="" onload="loadStockData()">
     <header>
       <div class="header-container">
         <div class="header-logo">
@@ -36,7 +36,7 @@
         <div class="summary">
           <div class="summary-selector">
             <button onclick="">DESTAQUES</button>
-            <button>PATRIMÔNIO</button>
+            <button onclick="">PATRIMÔNIO</button>
           </div>
           <ul class="summary-highlights">
             <li class="summary-info">
@@ -110,14 +110,17 @@
           </div>
 
           <table id="stock-table" class="products-list">
-            <tr class="table-header">
-              <th>NOME</th>
-              <th>QUANTIDADE</th>
-              <th>SALDO</th>
-              <th>COTAÇÃO</th>
-              <th>PREÇO MÉDIO</th>
-              <th>VARIAÇÃO</th>
-            </tr>
+            <thead>
+              <tr class="table-header">
+                <th>NOME</th>
+                <th>QUANTIDADE</th>
+                <th>SALDO</th>
+                <th>COTAÇÃO</th>
+                <th>PREÇO MÉDIO</th>
+                <th>VARIAÇÃO</th>
+              </tr>
+            </thead>
+            <tbody class="table-body"></tbody>
           </table>
         </div>
         <div class="products-container">
@@ -230,10 +233,6 @@
     </section>
 
     <!-- Script -->
-    <script
-      defer
-      src="assets/scripts/script.js"
-      onload="loadLocalStock()"
-    ></script>
+    <script defer src="assets/scripts/script.js" onload=""></script>
   </body>
 </html>
