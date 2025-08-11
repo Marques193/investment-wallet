@@ -15,7 +15,7 @@
     <title>Carteira de Investimentos</title>
   </head>
 
-  <body class="" onload="loadStockData()">
+  <body class="" onload="loadStockData(a), loadStockData(b)">
     <header>
       <div class="header-container">
         <div class="header-logo">
@@ -63,18 +63,18 @@
       </div>
     </main>
     <section class="main-wallet">
-      <form class="stock-form">
+      <form class="stocks-form">
         <div class="form-container">
           <div class="form-container-inside">
             <h4>Adicionar ação</h4>
             <p>Nome:</p>
-            <input type="text" id="stock-form-name" required />
+            <input type="text" id="stocks-form-name" required />
 
             <p>Quantidade:</p>
-            <input type="text" id="stock-form-amount" />
+            <input type="text" id="stocks-form-amount" />
 
             <p>Preço:</p>
-            <input type="text" id="stock-form-balance" />
+            <input type="text" id="stocks-form-balance" />
 
             <div class="sum-total"><span>Total: R$ 000,00</span></div>
           </div>
@@ -84,13 +84,45 @@
               id="cancel"
               type="button"
               value="Cancelar"
-              onclick="cancelButton()"
+              onclick="cancelButton(a)"
             />
             <input
               id="confirm"
               type="button"
               value="Confirmar"
-              onclick="getStockValues()"
+              onclick="getStockValues(a)"
+            />
+          </div>
+        </div>
+      </form>
+      <form class="fiis-form">
+        <div class="form-container">
+          <div class="form-container-inside">
+            <h4>Adicionar fundo imobiliário</h4>
+            <p>Nome:</p>
+            <input type="text" id="fiis-form-name" required />
+
+            <p>Quantidade:</p>
+            <input type="text" id="fiis-form-amount" />
+
+            <p>Preço:</p>
+            <input type="text" id="fiis-form-balance" />
+
+            <div class="sum-total"><span>Total: R$ 000,00</span></div>
+          </div>
+
+          <div class="form-buttons">
+            <input
+              id="cancel"
+              type="button"
+              value="Cancelar"
+              onclick="cancelButton(b)"
+            />
+            <input
+              id="confirm"
+              type="button"
+              value="Confirmar"
+              onclick="getStockValues(b)"
             />
           </div>
         </div>
@@ -101,7 +133,7 @@
           <div class="products-header">
             <div class="contain">
               <h4>AÇÕES</h4>
-              <button id="add-stock" onclick="addStockButton()">+</button>
+              <button id="add-stock" onclick="addStockButton(a)">+</button>
             </div>
             <div class="products-header-info">
               <div class="phi-info">Variação: 3,20%</div>
@@ -109,7 +141,7 @@
             </div>
           </div>
 
-          <table id="stock-table" class="products-list">
+          <table id="stocks-table" class="products-list">
             <thead>
               <tr class="table-header">
                 <th>NOME</th>
@@ -118,6 +150,7 @@
                 <th>COTAÇÃO</th>
                 <th>PREÇO MÉDIO</th>
                 <th>VARIAÇÃO</th>
+                <th>REM.</th>
               </tr>
             </thead>
             <tbody class="table-body"></tbody>
@@ -125,49 +158,56 @@
         </div>
         <div class="products-container">
           <div class="products-header">
-            <h4>FIIS</h4>
+            <div class="contain">
+              <h4>FIIS</h4>
+              <button id="add-fiis" onclick="addStockButton(b)">+</button>
+            </div>
             <div class="products-header-info">
               <div class="phi-info">Variação: 1,20%</div>
               <div class="phi-info">Saldo: R$ 677,18</div>
             </div>
           </div>
-          <table class="products-list">
-            <tr class="table-header">
-              <th>NOME</th>
-              <th>QUANTIDADE</th>
-              <th>SALDO</th>
-              <th>COTAÇÃO</th>
-              <th>PREÇO MÉDIO</th>
-              <th>VARIAÇÃO</th>
-              <th>DY</th>
-            </tr>
-            <tr class="table-row">
-              <td><span>RZTR11</span></td>
-              <td><span>100</span></td>
-              <td><span>R$ 3318,00</span></td>
-              <td><span>R$ 33,18</span></td>
-              <td><span>R$ 32.13</span></td>
-              <td><span>3,14%</span></td>
-              <td><span>7,80%</span></td>
-            </tr>
-            <tr class="table-row">
-              <td><span>MXRF11</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-            </tr>
-            <tr class="table-row">
-              <td><span>NEWL11</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-              <td><span>XXXX</span></td>
-            </tr>
+          <table id="fiis-table" class="products-list">
+            <thead id="fiis-head">
+              <tr class="table-header">
+                <th>NOME</th>
+                <th>QUANTIDADE</th>
+                <th>SALDO</th>
+                <th>COTAÇÃO</th>
+                <th>PREÇO MÉDIO</th>
+                <th>VARIAÇÃO</th>
+                <th>REM.</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              <tr class="table-row">
+                <td><span>RZTR11</span></td>
+                <td><span>100</span></td>
+                <td><span>R$ 3318,00</span></td>
+                <td><span>R$ 33,18</span></td>
+                <td><span>R$ 32.13</span></td>
+                <td><span>3,14%</span></td>
+                <td><span>7,80%</span></td>
+              </tr>
+              <tr class="table-row">
+                <td><span>MXRF11</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+              </tr>
+              <tr class="table-row">
+                <td><span>NEWL11</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+                <td><span>XXXX</span></td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div class="products-container">

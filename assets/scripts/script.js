@@ -1,12 +1,14 @@
 const bodyStyle = document.querySelector("body");
 
 // Carrega o localStorage ao abrir a página
+let a = "stocks";
+let b = "fiis";
 
 // Tabela de ações
-const stockForm = document.querySelector(".stock-form");
 
 // Botão para adicionar ações
-let addStockButton = () => {
+let addStockButton = (type) => {
+  const stockForm = document.querySelector(`.${type}-form`);
   // Escurece a tela
   bodyStyle.classList.add("backdrop");
 
@@ -14,7 +16,8 @@ let addStockButton = () => {
 };
 
 // Fechar formulário
-let cancelButton = () => {
+let cancelButton = (type) => {
+  const stockForm = document.querySelector(`.${type}-form`);
   bodyStyle.classList.remove("backdrop");
 
   stockForm.style.display = "none";
@@ -22,22 +25,22 @@ let cancelButton = () => {
 
 // Pegar valores do formulário
 
-let getStockValues = () => {
-  const stockFormName = document.getElementById("stock-form-name").value;
+let getStockValues = (type) => {
+  const stockFormName = document.getElementById(`${type}-form-name`).value;
   const stockFormAmount = parseFloat(
-    document.getElementById("stock-form-amount").value
+    document.getElementById(`${type}-form-amount`).value
   );
   const stockFormPrice = parseFloat(
-    document.getElementById("stock-form-balance").value
+    document.getElementById(`${type}-form-balance`).value
   );
 
   //  Testa se os campos estao preenchidos
   if (stockFormName && stockFormAmount && stockFormPrice) {
     // API da bolsa
-    saveLocalStorage(stockFormName, stockFormPrice, stockFormAmount);
+    saveLocalStorage(stockFormName, stockFormPrice, stockFormAmount, type);
 
     // fecha o formulario
-    cancelButton();
+    cancelButton(type);
   } else {
     alert("Todos os campos devem ser preenchidos!");
   }
@@ -45,30 +48,30 @@ let getStockValues = () => {
 
 //  Salva no localStorage
 
-let saveLocalStorage = (nome, preco, qtd) => {
+let saveLocalStorage = (nome, preco, qtd, type) => {
   stockObj = {
     name: nome,
     price: preco,
     amount: qtd,
   };
-  if (localStorage.getItem("stocks") === null) {
+  if (localStorage.getItem(type) === null) {
     stocks = [];
     stocks.push(stockObj);
-    localStorage.setItem("stocks", JSON.stringify(stocks));
+    localStorage.setItem(type, JSON.stringify(stocks));
   } else {
-    checkLocalStock(nome, qtd, preco, stockObj);
+    checkLocalStock(nome, qtd, preco, stockObj, type);
   }
-  loadStockData();
+  loadStockData(type);
 };
 
 //  Carrega do localStorage
-let loadStockData = () => {
-  if (localStorage.getItem("stocks")) {
-    stocks = JSON.parse(localStorage.getItem("stocks"));
+let loadStockData = (type) => {
+  if (localStorage.getItem(type)) {
+    stocks = JSON.parse(localStorage.getItem(type));
   } else {
     stocks = [];
   }
-  let table = document.getElementById("stock-table");
+  let table = document.getElementById(`${type}-table`);
   tbody = table.querySelector("tbody");
 
   tbody.innerHTML = "";
@@ -109,16 +112,46 @@ let loadStockData = () => {
         100
       ).toFixed(2);
       apiVarCell.innerHTML = `${apiStockVar}%`;
+      // botao de remover linha
+      deleteCell = loadedRow.insertCell(6);
+      let btn = document.createElement("button");
+      btn.innerHTML = "X";
+      deleteCell.appendChild(btn);
+      deleteCell.classList.add("remove-button");
+
+      switch (type) {
+        case type = "stocks":
+          type = a
+          break
+        case type = "fiis":
+          type = b
+          break
+      }
+      
+      btn.setAttribute("onClick", `removeRow(${type}, this)`);
     }
     loadFromApi(stocks.name);
   });
 };
 
-let checkLocalStock = (stockName, stockAmount, stockPrice, stockObj) => {
+// botao de remover linhas
+let removeRow = (type, index) => {
+  tableType = document.getElementById(`${type}-table`);
+  let row = index.closest('tr')
+  let rowIndex = row.rowIndex
+
+  let storageTypeOf = String(type)
+  let loadedArray = JSON.parse(localStorage.getItem(storageTypeOf))
+  // loadedArray.splice(rowIndex, 1)
+  console.log(type)
+
+};
+
+let checkLocalStock = (stockName, stockAmount, stockPrice, stockObj, type) => {
   // Carregar as acoes existentes ou inicializar vazio
   let stocks = [];
   let loadedStocks = [];
-  loadedStocks.push(JSON.parse(localStorage.getItem("stocks")));
+  loadedStocks.push(JSON.parse(localStorage.getItem(type)));
   stocks = stocks.concat(loadedStocks).flat();
 
   // Variável para verificar se encontrou a acao
@@ -141,6 +174,6 @@ let checkLocalStock = (stockName, stockAmount, stockPrice, stockObj) => {
   }
 
   // Salvar  acoes atualizados no localStorage
-  localStorage.setItem("stocks", JSON.stringify(stocks));
-  stocks = JSON.parse(localStorage.getItem("stocks"));
+  localStorage.setItem(type, JSON.stringify(stocks));
+  stocks = JSON.parse(localStorage.getItem(type));
 };
