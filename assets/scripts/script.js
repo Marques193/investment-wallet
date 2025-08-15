@@ -112,6 +112,7 @@ let loadStockData = (type) => {
         100
       ).toFixed(2);
       apiVarCell.innerHTML = `${apiStockVar}%`;
+
       // botao de remover linha
       deleteCell = loadedRow.insertCell(6);
       let btn = document.createElement("button");
@@ -119,16 +120,13 @@ let loadStockData = (type) => {
       deleteCell.appendChild(btn);
       deleteCell.classList.add("remove-button");
 
-      switch (type) {
-        case type = "stocks":
-          type = a
-          break
-        case type = "fiis":
-          type = b
-          break
+      if (type === "stocks") {
+        btn.setAttribute("onClick", `removeRow(a, this)`);
+      } else if (type === "fiis") {
+        btn.setAttribute("onClick", `removeRow(b, this)`);
       }
-      
-      btn.setAttribute("onClick", `removeRow(${type}, this)`);
+
+      // btn.setAttribute("onClick", `removeRow(${type}, this)`);
     }
     loadFromApi(stocks.name);
   });
@@ -137,14 +135,15 @@ let loadStockData = (type) => {
 // botao de remover linhas
 let removeRow = (type, index) => {
   tableType = document.getElementById(`${type}-table`);
-  let row = index.closest('tr')
-  let rowIndex = row.rowIndex
+  let row = index.closest("tr");
+  let rowIndex = row.rowIndex;
 
-  let storageTypeOf = String(type)
-  let loadedArray = JSON.parse(localStorage.getItem(storageTypeOf))
-  // loadedArray.splice(rowIndex, 1)
-  console.log(type)
+  let loadedArray = JSON.parse(localStorage.getItem(type));
+  loadedArray.splice(rowIndex - 1, 1);
 
+  // atualiza a tabela pelo localStorage
+  localStorage.setItem(type, JSON.stringify(loadedArray));
+  loadStockData(type);
 };
 
 let checkLocalStock = (stockName, stockAmount, stockPrice, stockObj, type) => {
