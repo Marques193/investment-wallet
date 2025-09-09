@@ -130,6 +130,9 @@ let loadStockData = (type) => {
     }
     loadFromApi(stocks.name);
   });
+  setTimeout(function () {
+    updateTableHeader(type);
+  }, 1500);
 };
 
 // botao de remover linhas
@@ -175,4 +178,17 @@ let checkLocalStock = (stockName, stockAmount, stockPrice, stockObj, type) => {
   // Salvar  acoes atualizados no localStorage
   localStorage.setItem(type, JSON.stringify(stocks));
   stocks = JSON.parse(localStorage.getItem(type));
+};
+
+// Atualizar cabecalho da tabela
+let updateTableHeader = (type) => {
+  const tableHeader = document.getElementById(`${type}-table`);
+  const rows = tableHeader.getElementsByTagName("tr");
+  let tableBalance = 0;
+
+  for (let i = 1; i < rows.length; i++) {
+    const cells = rows[i].cells[2].textContent;
+    console.log(cells);
+  }
+  // console.log(rows[0]);
 };
