@@ -132,7 +132,7 @@ let loadStockData = (type) => {
   });
   setTimeout(function () {
     updateTableHeader(type);
-  }, 1500);
+  }, 1000);
 };
 
 // botao de remover linhas
@@ -184,11 +184,26 @@ let checkLocalStock = (stockName, stockAmount, stockPrice, stockObj, type) => {
 let updateTableHeader = (type) => {
   const tableHeader = document.getElementById(`${type}-table`);
   const rows = tableHeader.getElementsByTagName("tr");
+  const tableHeaderVar = document.getElementById(`${type}-var`);
+  const tableHeaderBal = document.getElementById(`${type}-bal`);
   let tableBalance = 0;
+  let totalVar = 0;
+  let headerTotalVar = 0;
 
+  // Calcula o saldo total da tabela
   for (let i = 1; i < rows.length; i++) {
-    const cells = rows[i].cells[2].textContent;
-    console.log(cells);
+    const cells = parseFloat(rows[i].cells[2].textContent.slice(3));
+    tableBalance += cells;
+
+    // Calcula a variação total da tabela
+    const rowVar =
+      parseFloat(rows[i].cells[4].textContent.slice(3)) *
+      parseFloat(rows[i].cells[1].textContent);
+    totalVar += rowVar;
+    headerTotalVar = (tableBalance / totalVar - 1) * 100;
+
+    // Atualiza o cabeçalho da tabela
+    tableHeaderVar.textContent = `Variação: ${headerTotalVar.toFixed(2)}%`;
+    tableHeaderBal.textContent = `Saldo: R$ ${tableBalance.toFixed(2)}`;
   }
-  // console.log(rows[0]);
 };
